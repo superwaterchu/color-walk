@@ -1,0 +1,104 @@
+/* 根元素：整個應用的最外層容器的樣式 */
+#root {
+  width: 100%;          /* 寬度佔滿容器 */
+  max-width: 1280px;    /* 最大寬度 1280 像素 */
+  margin: 0 auto;       /* 上下邊距 0，左右自動置中 */
+  padding: 1rem;        /* 內部邊距預設 1rem */
+  text-align: center;   /* 文字置中對齊 */
+  box-sizing: border-box; /* 確保 padding 不會影響整體寬度 */
+}
+
+/* app 類別：主要內容區域的樣式 */
+.app {
+  display: flex;          /* 使用 flex 布局 */
+  flex-direction: column; /* 垂直排列內容 */
+  align-items: center;    /* 水平置中對齊 */
+  min-height: 100vh;      /* 最小高度為整個視窗高度 */
+  background-color: #f5f5f5;  /* 背景色為淺灰色 */
+  padding: 1rem;          /* 內部邊距 */
+}
+
+/* 標題文字的樣式 */
+h1 {
+  color: #333;           /* 文字顏色為深灰色 */
+  margin-bottom: 0.5em;  /* 下方邊距為 0.5em */
+  font-size: 3rem;     /* 預設文字大小 */
+  word-break: keep-all;  /* 避免文字在中文字元間斷行 */
+  line-height: 1.2;      /* 行高 */
+}
+
+/* 說明文字的樣式 */
+p {
+  color: #666;           /* 文字顏色為中灰色 */
+  margin-bottom: 2em;    /* 下方邊距為 2em */
+  font-size: 1.8rem;     /* 預設文字大小 */
+  line-height: 1.5;      /* 行高 */
+}
+
+/* RWD 設定 */
+@media screen and (max-width: 768px) {
+  #root {
+    padding: 0.5rem;    /* 在手機上減少內邊距 */
+  }
+
+  .app {
+    padding: 0.5rem;    /* 在手機上減少內邊距 */
+  }
+
+  h1 {
+    font-size: 2.8rem;    /* 在手機上縮小標題大小 */
+    margin-bottom: 0.3em; /* 縮小間距 */
+  }
+
+  p {
+    font-size: 3rem;    /* 在手機上縮小說明文字大小 */
+    margin-bottom: 1.5em; /* 縮小間距 */
+  }
+}
+
+/* 針對更小的螢幕 */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2rem;  /* 在更小的螢幕上進一步縮小標題 */
+  }
+
+  p {
+    font-size: 1.2rem;  /* 在更小的螢幕上進一步縮小說明文字 */
+  }
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

@@ -1,0 +1,66 @@
+/* 容器：用來包住整個轉盤的區域 */
+.wheel-container {
+  position: relative;  /* 設定相對定位，讓內部元素可以用絕對定位 */
+  width: 90vw;        /* 寬度為視窗寬度的 90% */
+  max-width: 400px;   /* 最大寬度 400 像素 */
+  height: auto;       /* 高度自動調整 */
+  aspect-ratio: 1;    /* 保持 1:1 的寬高比 */
+  margin: 20px auto;  /* 上下邊距 20 像素，左右自動置中 */
+}
+
+/* 轉盤：整個可以旋轉的圓形區域 */
+.color-wheel {
+  position: relative;     /* 設定相對定位 */
+  width: 100%;           /* 寬度佔滿容器 */
+  height: 100%;          /* 高度佔滿容器 */
+  transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);  /* 旋轉動畫效果，持續 3 秒 */
+  cursor: pointer;       /* 滑鼠變成手指形狀，表示可以點擊 */
+  transform-origin: center center;  /* 設定旋轉的中心點 */
+}
+
+/* SVG 元素樣式 */
+.color-wheel svg {
+  width: 100%;          /* 寬度佔滿容器 */
+  height: 100%;         /* 高度佔滿容器 */
+  touch-action: none;   /* 防止觸控裝置的預設行為 */
+}
+
+/* 指針：指向當前選中顏色的三角形 */
+.pointer {
+  position: absolute;    /* 絕對定位 */
+  bottom: 380px;        /* 從底部向下偏移 380 像素 */
+  left: 50%;            /* 水平置中 */
+  transform: translateX(-50%);  /* 向左移動自身寬度的一半，實現完美置中 */
+  width: 20px;          /* 指針寬度 */
+  height: 40px;         /* 指針高度 */
+  background-color: #333;  /* 指針顏色為深灰色 */
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);  /* 使用多邊形裁切創建三角形 */
+  z-index: 1;           /* 確保指針顯示在最上層 */
+}
+
+/* RWD 設定 */
+@media screen and (max-width: 768px) {
+  .wheel-container {
+    width: 85vw;       /* 在平板上稍微縮小寬度 */
+    margin: 15px auto; /* 縮小邊距 */
+  }
+
+  .pointer {
+    width: 16px;      /* 縮小指針寬度 */
+    height: 32px;     /* 縮小指針高度 */
+    bottom: calc(85vw - 20px); /* 動態調整指針位置 */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wheel-container {
+    width: 80vw;       /* 在手機上進一步縮小寬度 */
+    margin: 10px auto; /* 進一步縮小邊距 */
+  }
+
+  .pointer {
+    width: 14px;      /* 進一步縮小指針寬度 */
+    height: 28px;     /* 進一步縮小指針高度 */
+    bottom: calc(80vw - 20px); /* 動態調整指針位置 */
+  }
+} 
